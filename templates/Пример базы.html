@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru"> <!--Указываем язык страницы что бы браузер правильно отображал некоторые данные. Например: кавычки.-->
+    <head>  <!-- Этот раздел предназначен для заголовка страницы и технической информации. Не отображается браузером (кроме тега title) -->
+        <meta charset="utf-8"/>  <!--Сообщаем браузеру кодировку страницы-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--Сообщаем браузеру о том что сайт адаптирован для мобильных 'viewport'-->
+        <link type="text/css" href="/static/css/bootstrap.min.css" rel="stylesheet">  <!-- Путь к css -->
+        {% block title -%}  <!--Начало работы блока title. Заголовок страницы -->
+            {% if title %}
+                <title>{{title}}</title> <!--Если задан title тогда печатает эту секцию-->
+            {% else %}
+                <title>Не указан параметр title</title> <!--Если title не задан тогда печатает эту секцию-->
+            {% endif %}
+        {% endblock %} <!--Конец работы блока title -->
+    </head>
+
+    <body> <!--Контент страницы-->
+        <header> <!--Шапка (меню) сайта-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!--Здесь можно задать цвет шапки  и в теории размер отображения-->
+            <div class="container-xxl">  <!--Максимально широкий контейнер 1320px-->
+                <a class="navbar-brand" href="/">TAO.BY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"></button>
+
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    {%- block mainmenu -%} <!--Меню сайта-->
+                        {% for m in menu -%} <!--Меню из массива списка-->
+                            <!--<li class="nav-item"><a class="nav-link" aria-current="page" href="kalk">Калькулятор топлива</a></li>-->
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="{{m.url}}">{{m.name}}</a></li>
+                    {% endfor -%}
+                </ul>
+            </div>
+        </nav>
+                    {% endblock mainmenu -%}
+        </header>
+
+        {% block content -%}
+        {% endblock -%}
+
+
+        <footer> <!--Подвал-->
+
+        </footer>
+    </body>
+</html>
