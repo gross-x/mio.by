@@ -1,5 +1,5 @@
 # Загрузить убунту
-FROM python
+FROM python:3.10.1
 
 # Добавляем контакты
 # MAINTAINER DKA DEVELOP <gros@mio.by>
